@@ -4,7 +4,6 @@ module.exports = function(controller) {
 
     controller.on('hello', conductOnboarding);
     controller.on('welcome_back', conductOnboarding);
-    //test code
 
     function conductOnboarding(bot, message) {
 
