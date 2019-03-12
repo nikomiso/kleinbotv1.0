@@ -21,7 +21,7 @@ module.exports = function(controller) {
 
 
 
-    controller.hears(['buy','sell','documentation','docs','community'], 'message_received', function(bot, message) {
+    controller.hears(['buy','sell'], 'message_received', function(bot, message) {
     
         bot.startConversation(message, function(err, convo) {
     
@@ -34,33 +34,22 @@ module.exports = function(controller) {
                 payload: 'buy',
               },
               {
-                title: 'Join the Community',
-                payload: 'community',
-              },
-              {
-                title: 'Expert Help',
-                payload: 'contact us',
-              },
+                title: 'sell test text',
+                payload: 'sell',
+              }
             ]
           },[
             {
-              pattern: 'documentation',
+              pattern: 'buy',
               callback: function(res, convo) {
-                convo.gotoThread('docs');
+                convo.gotoThread('buy');
                 convo.next();
               }
             },
             {
-              pattern: 'community',
+              pattern: 'sell',
               callback: function(res, convo) {
-                convo.gotoThread('community');
-                convo.next();
-              }
-            },
-            {
-              pattern: 'contact',
-              callback: function(res, convo) {
-                convo.gotoThread('contact');
+                convo.gotoThread('sell');
                 convo.next();
               }
             },
@@ -89,30 +78,12 @@ module.exports = function(controller) {
     
           // set up community thread
           convo.addMessage({
-            text: 'Our developer community has thousands of members, and there are always friendly people available to answer questions about building bots!',
-          },'community');
+            text: 'This is but text',
+          },'buy');
     
           convo.addMessage({
-            text: '[Join our community Slack channel](https://community.botkit.ai) to chat live with the Botkit team, representatives from major messaging platforms, and other developers just like you!',
-          },'community');
-    
-          convo.addMessage({
-            text: '[Checkout the Github Issue Queue](https://github.com/howdyai/botkit/issues) to find frequently asked questions, bug reports and more.',
-          },'community');
-    
-          convo.addMessage({
-            action: 'default'
-          }, 'community');
-    
-    
-    
-          // set up contact thread
-          convo.addMessage({
-            text: 'The team who built me can help you build the perfect robotic assistant! They can answer all of your questions, and work with you to develop custom applications and integrations.\n\n[Use this form to get in touch](https://botkit.ai/contact.html), or email us directly at [help@botkit.ai](mailto:help@botkit.ai), and a real human will get in touch!',
-          },'contact');
-          convo.addMessage({
-            action: 'default'
-          }, 'contact');
+            text: 'This is sell text',
+          },'sell');
     
         });
     
