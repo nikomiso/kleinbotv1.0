@@ -1,6 +1,6 @@
 module.exports = function(controller) {
 
-    controller.hears(['help','contact','documentation','docs','community'], 'message_received', function(bot, message) {
+    controller.hears(['buy','sell','documentation','docs','community'], 'message_received', function(bot, message) {
     
         bot.startConversation(message, function(err, convo) {
     
