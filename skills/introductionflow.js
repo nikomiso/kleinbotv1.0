@@ -1,5 +1,26 @@
 module.exports = function(controller) {
 
+    function conductOnboarding(bot, message) {
+
+        bot.startConversation(message, function(err, convo) {
+  
+          convo.say({
+            text: 'Hello! I am kleinbot, how can I help you?',
+            quick_replies: [
+              {
+                title: 'Help',
+                payload: 'help',
+              },
+            ]
+          });
+  
+  
+        });
+  
+      }
+
+
+
     controller.hears(['buy','sell','documentation','docs','community'], 'message_received', function(bot, message) {
     
         bot.startConversation(message, function(err, convo) {
@@ -9,8 +30,8 @@ module.exports = function(controller) {
             text: 'I can point you to resources, and connect you with experts who can help.',
             quick_replies: [
               {
-                title: 'Read the Docs',
-                payload: 'documentation',
+                title: 'buy test text',
+                payload: 'buy',
               },
               {
                 title: 'Join the Community',
@@ -58,12 +79,12 @@ module.exports = function(controller) {
                   
           // set up docs threads
           convo.addMessage({
-            text: 'Botkit is extensively documented! Here are some useful links:\n\n[Botkit Studio Help Desk](https://botkit.groovehq.com/help_center)\n\n[Botkit Anywhere README](https://github.com/howdyai/botkit-starter-web/blob/master/readme.md#botkit-anywhere)\n\n[Botkit Developer Guide](https://github.com/howdyai/botkit/blob/master/readme.md#build-your-bot)',
-          },'docs');
+            text: 'Test text for buy button.',
+          },'buy');
     
           convo.addMessage({
             action: 'default'
-          }, 'docs');
+          }, 'buy');
     
     
           // set up community thread
