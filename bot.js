@@ -41,8 +41,8 @@ var controller = Botkit.socketbot(bot_options);
 
 
 
-var Botkit = require('botkit'),
-  firebaseStorage = require('botkit-storage-firebase')({databaseURL: 'https://kleinbot-a91cd.firebaseio.com/'}),
+var Botkit = require('botkit');
+  firebaseStorage = require('botkit-storage-firebase')({databaseURL: 'https://kleinbot-a91cd.firebaseio.com/'});
   controller = Botkit.web({
       storage: firebaseStorage
   });
