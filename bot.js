@@ -39,17 +39,6 @@ if (process.env.MONGO_URI) {
 // Create the Botkit controller, which controls all instances of the bot.
 var controller = Botkit.socketbot(bot_options);
 
-
-
-var Botkit = require('botkit');
-  firebaseStorage = require('botkit-storage-firebase')({databaseURL: 'https://kleinbot-a91cd.firebaseio.com/'});
-  controller = Botkit.web({
-      storage: firebaseStorage
-  });
-
-
-
-
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
 var webserver = require(__dirname + '/components/express_webserver.js')(controller);
 
@@ -69,6 +58,12 @@ var normalizedPath = require("path").join(__dirname, "skills");
 require("fs").readdirSync(normalizedPath).forEach(function(file) {
   require("./skills/" + file)(controller);
 });
+
+var Botkit = require('botkit');
+    var mysqlStorage = require('botkit-storage-mysql')({host: '127.0.0.1', user: 'root', password: '', database: 'kleindb'});
+    controller = Botkit.anywhere({
+        storage: mysqlStorage
+    });
 
 console.log('I AM ONLINE! COME TALK TO ME: http://localhost:' + (process.env.PORT || 3000))
 
