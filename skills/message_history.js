@@ -64,9 +64,9 @@ module.exports = function(controller) {
   //   });
   // }
 
-  controller.webserver.post('/botkit/history', function(req, res) {
-    res.json({success:true, history: []});
-  });
+  // controller.webserver.post('/botkit/history', function(req, res) {
+  //   res.json({success:true, history: []});
+  // });
 
 
 }

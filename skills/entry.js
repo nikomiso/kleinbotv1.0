@@ -17,10 +17,6 @@ module.exports = function(controller) {
                   {
                       title: 'No, thank you!',
                       payload:'No, thank you!',
-                  },
-                  {
-                      title: 'Contact us.',
-                      payload: 'Contact us.',
                   }
                 ]
               });

@@ -2,7 +2,7 @@
 
 module.exports = function(controller) {
 
-    controller.hears('sell', 'message_received', function(bot, message) {
+    controller.hears('landlord', 'message_received', function(bot, message) {
         
         bot.startConversation(message, function(err, convo) {
             convo.addMessage('Ok! Let\' s see what I can do for you!')
@@ -10,11 +10,15 @@ module.exports = function(controller) {
             text: 'Would you like to check the average selling price of an area or entry your property?' ,
             quick_replies: [
                 {
-                title: 'Average selling price', 
-                payload: 'Average selling price',
+                title: 'Selling price', 
+                payload: 'Selling price',
                 },
                 {
-                    title: 'Entry',
+                title: 'Renting price', 
+                payload: 'Renting price',
+                },
+                {
+                    title: 'Entry your property for sale or rent',
                     payload: 'Entry',
                 }
             ]
